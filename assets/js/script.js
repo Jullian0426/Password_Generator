@@ -15,7 +15,7 @@ function generatePassword() {
   
   // Test if user input is valid
   const isANumber = /^\d+$/.test(length);
-  if (!isANumber || length <= 8 || length >= 128) {
+  if (!isANumber || length < 8 || length > 128) {
     window.alert("Please Try Again")
     return;
   }
