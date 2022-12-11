@@ -5,12 +5,14 @@ var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", prompts);
 
 
-var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~';
-var result = '';
+
 
 
 // Give user prompts for password criteria
 function prompts() {
+  var characters = ['ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz', '0123456789', '\!\"\#\$\%\&\'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\\\]\^\_\`\{\|\}\~'];
+  var result = '';
+
   // Ask user for password length
   var length = window.prompt("Set the Password Length. At least 8 but no more than 128.")
   
@@ -23,9 +25,28 @@ function prompts() {
     return;
   }
   
-  var lowercase = window.confirm("Include lowercase? OK for yes, Cancel for no.")
-
   // Ask user what characters to include
+  var uppercase = window.confirm("Include lowercase? OK for yes, Cancel for no.")
+  if (!uppercase) {
+    characters.splice(0, 1);
+  }
+
+  var lowercase = window.confirm("Include lowercase? OK for yes, Cancel for no.")
+  if (!lowercase) {
+    characters.splice(1, 1);
+  }
+
+  var numbers = window.confirm("Include lowercase? OK for yes, Cancel for no.")
+  if (!numbers) {
+    characters.splice(2, 1);
+  }
+
+  var specials = window.confirm("Include lowercase? OK for yes, Cancel for no.")
+  if (!specials) {
+    characters.splice(3, 1);
+  }
+
+
 }
 
 
